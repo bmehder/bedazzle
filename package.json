@@ -1,9 +1,12 @@
 {
 	"name": "bedazzlejs",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Progressively decorate your objects with composable functions.",
 	"main": "bedazzle.js",
 	"type": "module",
+  "scripts": {
+    "test": "node bedazzle.test.js"
+  },
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/bmehder/bedazzle.git"
