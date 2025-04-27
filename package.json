@@ -1,0 +1,12 @@
+{
+  "name": "bedazzle",
+  "version": "1.0.0",
+  "description": "Progressively decorate an object with new properties and methods",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brad Mehder",
+  "license": "ISC"
+}
