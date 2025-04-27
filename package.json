@@ -1,6 +1,6 @@
 {
 	"name": "bedazzlejs",
-	"version": "1.0.3",
+	"version": "1.0.5",
 	"description": "Progressively decorate your objects with composable functions.",
 	"main": "bedazzle.js",
 	"type": "module",
@@ -23,5 +23,6 @@
 		"object",
 		"composition",
 		"bedazzle"
-	]
+	],
+	"npm": "https://www.npmjs.com/package/bedazzlejs"
 }
