@@ -1,15 +1,19 @@
 {
 	"name": "bedazzlejs",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Progressively decorate your objects with composable functions.",
 	"main": "bedazzle.js",
 	"type": "module",
-  "scripts": {
-    "test": "node bedazzle.test.js"
-  },
+	"scripts": {
+		"test": "node bedazzle.test.js"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/bmehder/bedazzle.git"
+	},
+	"homepage": "https://github.com/bmehder/bedazzle#readme",
+	"bugs": {
+		"url": "https://github.com/bmehder/bedazzle/issues"
 	},
 	"author": "Brad Mehder",
 	"license": "MIT",
