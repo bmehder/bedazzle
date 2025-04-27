@@ -1,78 +1,118 @@
-# bedazzle ✨
+# 📦 BedazzleJS
 
-Bedazzle your objects with progressive decorators!
+[![npm version](https://img.shields.io/npm/v/bedazzlejs.svg)](https://www.npmjs.com/package/bedazzlejs)
 
-```js
-import { bedazzle } from './bedazzle.js';
+> A tiny functional way to decorate objects with composable behaviors.
 
-// Define some decorators to add to the object
-const withGlitter = obj => ({
-  sparkle: () => console.log('✨ Sparkle with glitter! ', obj),
-});
+---
 
-const withArea = ({ width, height }) => ({
-  getArea: () => width * height,
-});
+## TL;DR
 
-const withPerimeter = ({ width, height }) => ({
-  getPerimeter: () => 2 * (width + height),
-});
+**BedazzleJS** lets you progressively add methods and properties to objects using pure functions — no classes, no heavy frameworks.
 
-const withDiagonalLength = ({ width, height }) => ({
-  getDiagonalLength: () => Math.sqrt(width ** 2 + height ** 2),
-});
+---
 
-// Combine them all using bedazzle
-const magicObject = bedazzle(
-  { width: 5, height: 10, type: 'rectangle' },
-  withGlitter,
-  withArea,
-  withPerimeter,
-  withDiagonalLength
-);
+## What is BedazzleJS?
 
-// Call the methods added by decorators
-magicObject.sparkle();           // ✨ Sparkle with glitter!  { width: 5, height: 10, type: 'rectangle' }
-console.log(magicObject.getArea());           // 50
-console.log(magicObject.getPerimeter());     // 30
-console.log(magicObject.getDiagonalLength()); // 11.180339887498949
+BedazzleJS is a tiny library (less than 1KB) that helps you **compose objects from multiple behaviors** without needing class hierarchies, mutation, or complexity.
+
+Instead of rigid blueprints (like classes), you add behaviors one step at a time with small, reusable functions.
+
+---
+
+## Why BedazzleJS?
+
+- ✅ No `class` inheritance mess
+- ✅ No framework lock-in
+- ✅ Predictable, pure functions
+- ✅ Easy to extend, compose, and test
+- ✅ Perfect for plugins, middleware, or micro-frameworks
+
+---
+
+## Installation
+
+```bash
+npm install bedazzlejs
 ```
 
-## Description
-In spirit, bedazzlejs is:
-- Part decorator
-- Part reducer
-- Part pipeline
-- Part recursive composer
+or
 
-Closest concepts:
-- pipe (but merging objects at each step)
-- mergeAll (but with functions producing partial objects)
+```bash
+pnpm add bedazzlejs
+```
 
-How it works:
-- Each step is a function that receives the current state and a next function it can call recursively.
-- Each function returns partial props (methods or fields) to be merged into the object.
-- It builds an object gradually, but lets each step "opt-in" to deeper decoration.
+---
 
-Why it's unique and interesting:
-- It's a dynamic object builder based on decorator functions.
-- It’s middleware-ish but for object capabilities, not event handling.
-- It’s recursive and flexible, which most simple "pipeline" libraries aren’t.
+## Usage
 
-If it were a pattern name...Something like:
-- "Decorator Cascade"
-- "Progressive Decorator"
-- "Merging Pipe"
-- "Recursive Composer"
-- "Middleware Object Builder"
+```js
+import { bedazzle } from 'bedazzlejs';
 
-Bottom line:
-- Not quite classic facade, not quite classic pipeline — it's a hybrid.
+const withWheels = obj => ({
+  roll: () => console.log(`Rolling with ${obj.wheels} wheels!`)
+});
 
-🍃 Lightweight (~300 bytes)
+const withHorn = obj => ({
+  honk: () => console.log('Beep beep!')
+});
 
-🧠 Functional and composable
+const vehicle = bedazzle({ wheels: 4 }, withWheels, withHorn);
 
-🎨 Designed for dynamic object enhancement
+vehicle.roll(); // Rolling with 4 wheels!
+vehicle.honk(); // Beep beep!
+```
 
-# bedazzle
+You can easily add more decorators without changing the original object structure.
+
+---
+
+## API
+
+### `bedazzle(state, ...fns)`
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `state` | `Object` | The base object to decorate |
+| `...fns` | `Function[]` | Functions that receive the object and return partial objects to merge |
+
+Each function gets the current object and can return new properties, methods, or even call `next()` to continue decorating recursively.
+
+---
+
+## Real-World Ideas
+
+- Add "plugins" dynamically to a system
+- Compose UI components without classes
+- Create flexible middleware chains
+- Design small, testable interfaces
+- Create evolving APIs or objects at runtime
+
+---
+
+## How is this Different?
+
+|  | Classes | Factory Functions | BedazzleJS |
+|---|---|---|---|
+| Extendability | Medium (inheritance) | Medium (closures) | High (pure functions) |
+| Testability | Medium | High | Very High |
+| Complexity | Higher over time | Moderate | Very Low |
+
+BedazzleJS gives you **the freedom of factories** with **the simplicity of pure functions**.
+
+---
+
+## License
+
+MIT © [Brad Mehder](https://github.com/bmehder)
+
+---
+
+## Contributing
+
+Pull requests, issues, and ideas are welcome!
+
+- Fork the repo
+- Create a feature branch
+- Submit a pull request 🚀
+
