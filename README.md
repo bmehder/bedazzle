@@ -10,6 +10,7 @@ const withGlitter = obj => ({ sparkle: () => console.log('✨', obj) });
 const magic = bedazzle({ type: 'hat' }, withGlitter);
 
 magic.sparkle(); // ✨ { type: 'hat' }
+```
 
 🍃 Lightweight (~300 bytes)
 
