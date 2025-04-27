@@ -11,14 +11,3 @@ export function bedazzle(state, ...fns) {
 	})
 	return fns.reduce(reducer, state)
 }
-
-
-// If you want, you could later add:
-
-// A bedazzle.flow(...fns) function that returns a reusable decorator
-
-// A debug mode to track the decoration steps
-
-// A bedazzle.mergeStrategies feature if you want more control over how properties merge
-
-// Tiny helpers like withLogger built-in
