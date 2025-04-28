@@ -81,7 +81,6 @@ console.log(rect.getArea()); // 50
 const square = createSquare(5);
 console.log(square.getArea()); // 25
 console.log(square.describe()); // Square with sides of length 5
-```
 
 const rect = createRectangle(5, 10);
 console.log(rect.getArea()); // 50
