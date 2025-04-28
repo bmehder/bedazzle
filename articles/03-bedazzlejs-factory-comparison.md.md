@@ -1,4 +1,4 @@
-# 3. From Factory Functions to BedazzleJS: A Case for Functional Decorators
+# 3. From Classes and Factory Functions to BedazzleJS: A Case for Functional Decorators
 
 When you need to create objects with methods and properties in JavaScript, the usual approaches are:
 
@@ -119,7 +119,7 @@ rect.width = 5;
 rect.height = 10;
 console.log(rect.getArea()); // 50
 console.log(rect.getPerimeter()); // 30
-````
+```
 
 While this approach avoids subclassing, it can lead to name collisions and makes the code harder to follow as more mixins are added.
 
@@ -198,7 +198,9 @@ Is there a better way?
 
 ---
 
-## The BedazzleJS Approach: Composable, Functional Decorators
+## The BedazzleJS Approach
+
+Let’s take a look at how BedazzleJS approaches these problems differently.
 
 With BedazzleJS, you **compose behaviors one step at a time** using small decorator functions.
 
@@ -243,8 +245,6 @@ BedazzleJS focuses on flexible composition and runtime decoration using small, p
 
 BedazzleJS makes it easy to add, remove, or rearrange behavior at any time — without touching your original object setup.
 
-
-
 ## Adding New Features Is Simple
 
 This example highlights one of BedazzleJS's key advantages: the ability to add new behaviors to objects at runtime, long after their initial creation.
@@ -282,6 +282,8 @@ BedazzleJS supports decorating objects at creation and runtime, so your objects 
 If your needs are simple and static, factories or classes may be fine. But if you want flexibility, modularity, and composability, BedazzleJS is a great fit.
 
 ---
+
+If you’re ready to skip the boilerplate and build flexible objects the fun way, give BedazzleJS a try.
 
 ## Try It Out
 
