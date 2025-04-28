@@ -1,0 +1,11 @@
+# Ignore the notes.txt file
+notes.txt
+
+# Ignore node_modules (if you're working with Node.js)
+node_modules/
+
+# Ignore .env files
+.env
+
+# Ignore logs
+*.log

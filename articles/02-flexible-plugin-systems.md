@@ -1,4 +1,4 @@
-# Flexible Plugin Systems with BedazzleJS
+# 2. Flexible Plugin Systems with BedazzleJS
 
 [![npm version](https://img.shields.io/npm/v/bedazzlejs.svg)](https://www.npmjs.com/package/bedazzlejs)
 
