@@ -10,6 +10,8 @@ Each of these approaches works—but they often come with tradeoffs like less fl
 
 In this article, we'll walk through how you might traditionally solve these problems with factories or classes, and then show how **BedazzleJS** offers a simpler, more flexible alternative through **functional decorators**.
 
+_This article was partly inspired by the excellent explanation of composition vs inheritance in [this video by Web Dev Simplified](https://youtu.be/nnwD5Lwwqdo?si=54HVxtj9AQIA8w1I). BedazzleJS builds on these ideas by offering a simple, functional approach to composing behaviors._
+
 ---
 
 ## Traditional Approach #1: Classes
