@@ -1,4 +1,4 @@
-# From Factory Functions to BedazzleJS: A Case for Functional Decorators
+# 3. From Factory Functions to BedazzleJS: A Case for Functional Decorators
 
 When you need to create objects with methods and properties in JavaScript, the usual options are:
 
@@ -30,9 +30,27 @@ class Rectangle {
   }
 }
 
+// Example of inheritance
+class Square extends Rectangle {
+  constructor(size) {
+    super(size, size);
+  }
+
+  describe() {
+    return `Square with sides of length ${this.width}`;
+  }
+}
+
 const rect = new Rectangle(5, 10);
 console.log(rect.getArea()); // 50
+
+const square = new Square(5);
+console.log(square.getArea()); // 25
+console.log(square.describe()); // Square with sides of length 5
 ```
+
+✅ **Pros:** Familiar pattern, clear structure.  
+⚠️ **Cons:** Inheritance trees can get messy as behavior grows or changes. Adding new features often requires extending the class hierarchy or modifying existing classes.
 
 ✅ **Pros:** Familiar pattern, clear structure.  
 ⚠️ **Cons:** Inheritance trees get messy as behavior grows or changes.
@@ -62,7 +80,97 @@ console.log(rect.getArea()); // 50
 
 ## The Problem with Both Approaches
 
-Both classes and factory functions force you to **predefine all features up front**.
+Both classes and factory functions force you to **predefine all features up front**. In class-based systems, this often leads to creating subclasses (like `Square` extending `Rectangle`) to add or modify behavior. As the number of features grows, managing these inheritance chains becomes complex and rigid. Alternatively, mixins might be used to share behavior across classes, but they can introduce name collisions and make code harder to follow.
+
+This rigidity makes it difficult to add new functionality—like logging or a plugin system—without either modifying the original class or duplicating code elsewhere.
+
+For example, to avoid deep inheritance chains, you might use mixins like this:
+
+```js
+const AreaMixin = Base => class extends Base {
+  getArea() {
+    return this.width * this.height;
+  }
+};
+
+const PerimeterMixin = Base => class extends Base {
+  getPerimeter() {
+    return 2 * (this.width + this.height);
+  }
+};
+
+class Rectangle {}
+
+Object.assign(
+  Rectangle.prototype,
+  AreaMixin(class {}).prototype,
+  PerimeterMixin(class {}).prototype
+);
+
+const rect = new Rectangle();
+rect.width = 5;
+rect.height = 10;
+console.log(rect.getArea()); // 50
+console.log(rect.getPerimeter()); // 30
+```
+
+While this approach avoids subclassing, it can lead to name collisions and makes the code harder to follow as more mixins are added.
+
+### How BedazzleJS Simplifies This
+
+BedazzleJS avoids both inheritance chains and the mixin pattern entirely. Instead of patching prototypes or worrying about name conflicts, you define each piece of behavior as a pure function that decorates the object.
+
+#### Side-by-Side Comparison
+
+**Mixin Example:**
+```js
+const AreaMixin = Base => class extends Base {
+  getArea() {
+    return this.width * this.height;
+  }
+};
+
+class Rectangle {}
+Object.assign(Rectangle.prototype, AreaMixin(class {}).prototype);
+const rect = new Rectangle();
+rect.width = 5;
+rect.height = 10;
+console.log(rect.getArea()); // 50
+```
+
+**BedazzleJS Example:**
+```js
+import { bedazzle } from 'bedazzlejs';
+
+const withArea = ({ width, height }) => ({
+  getArea: () => width * height,
+});
+
+const rectangle = bedazzle({ width: 5, height: 10 }, withArea);
+console.log(rectangle.getArea()); // 50
+```
+
+✅ **No prototype manipulation**  
+✅ **No inheritance chains**  
+✅ **No name collisions**  
+✅ **Pure, composable functions**
+
+This means:
+- No fragile prototype manipulation.
+- No deep inheritance trees to maintain.
+- No mixin collisions.
+
+Each behavior lives in its own small, testable function—and you compose them as needed, directly onto plain objects.
+
+### Takeaway
+
+The core advantage of BedazzleJS is how naturally it encourages small, isolated units of behavior that can be combined as needed. Rather than baking every possible feature into a class or factory, BedazzleJS lets you layer functionality as your needs evolve.
+
+- ✅ Keep your behaviors modular.
+- ✅ Add new features without touching old code.
+- ✅ Build flexible systems without inheritance overhead.
+
+When your objects need to grow, BedazzleJS grows with them—gracefully.
 
 What happens if later on you want to add:
 - A `getDiagonalLength()` method?
@@ -171,3 +279,4 @@ npm install bedazzlejs
 ## License
 
 MIT © [Brad Mehder](https://github.com/bmehder)
+
