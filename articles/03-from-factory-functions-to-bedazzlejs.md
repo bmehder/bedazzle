@@ -52,9 +52,6 @@ console.log(square.describe()); // Square with sides of length 5
 ✅ **Pros:** Familiar pattern, clear structure.  
 ⚠️ **Cons:** Inheritance trees can get messy as behavior grows or changes. Adding new features often requires extending the class hierarchy or modifying existing classes.
 
-✅ **Pros:** Familiar pattern, clear structure.  
-⚠️ **Cons:** Inheritance trees get messy as behavior grows or changes.
-
 ---
 
 ## Traditional Approach #2: Factory Functions
@@ -68,6 +65,23 @@ const createRectangle = (width, height) => {
     getPerimeter: () => 2 * (width + height),
   };
 };
+
+// Example of extending a factory function
+const createSquare = (size) => {
+  const rect = createRectangle(size, size);
+  return {
+    ...rect,
+    describe: () => `Square with sides of length ${size}`,
+  };
+};
+
+const rect = createRectangle(5, 10);
+console.log(rect.getArea()); // 50
+
+const square = createSquare(5);
+console.log(square.getArea()); // 25
+console.log(square.describe()); // Square with sides of length 5
+```
 
 const rect = createRectangle(5, 10);
 console.log(rect.getArea()); // 50
@@ -224,7 +238,7 @@ console.log(rectangle.getDiagonalLength()); // 11.18
 | Approach          | Flexible Composition | Easy to Extend | Plain Objects | No Boilerplate |
 |------------------|----------------------|----------------|---------------|---------------|
 | Classes           | ❌                  | ⚠️ sometimes | ❌           | ❌           |
-| Factory Functions | ⚠️ possible       | ⚠️ awkward   | ✅           | ⚠️ tied to factory |
+| Factory Functions | ⚠️ possible (via extension like `createSquare`) | ⚠️ awkward (requires additional functions for each variation) | ✅ yes | ⚠️ tied to specific factory logic |
 | **BedazzleJS**    | ✅ natural            | ✅ easy           | ✅ yes       | ✅ minimal     |
 
 BedazzleJS makes it easy to add, remove, or rearrange behavior **at any time**, without touching your original object setup.
