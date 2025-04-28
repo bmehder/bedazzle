@@ -14,6 +14,8 @@ In this article, we'll walk through how you might traditionally solve these prob
 
 ## Traditional Approach #1: Classes
 
+**(Note:** Constructor functions are the older way of building objects in JavaScript using the `new` keyword, before ES6 introduced the `class` keyword. Classes are mostly syntactic sugar over constructor functions, but many older codebases still use them. The challenges of managing shared behavior and inheritance are similar in both cases.**)**
+
 ```js
 class Rectangle {
   constructor(width, height) {
