@@ -1,4 +1,4 @@
-# Press Release
+# 📰 Press Release
 
 ![BedazzleWorks Logo](https://myfunscience.com/wp-content/uploads/glitter-goat.jpg)
 
@@ -140,6 +140,16 @@ Learn more at [bedazzle.works](https://bedazzle.works), a site which is currentl
 > - Some behavior layering may sparkle more than others
 > - This deck contains forward-looking statements about composability that are subject to change based on vibes
 > - Use in production at your own delight
+
+## 🎤 Upcoming Conference Talk
+
+**Title:** *"From Chaos to Composability: The BedazzleJS Revolution"*  
+**Event:** MethodWorld 2024 – Las Vegas, Ballroom G  
+**Speaker:** Indigo Tran, Chief of Layering, BedazzleWorks™  
+
+> Join us for an immersive 45-minute session where we will live-code a `withCounter` bead, summon the glitter goat, and layer behaviors until the WiFi gives out. Sponsored by JuiceBoxCRM and InfiniteModal.
+
+Attendees will receive a free sticker, a lanyard infused with emotional statefulness, and early access to our limited-edition BedazzleJS NFT: `withHologram()`.
 
 ## 🐦 Official Launch Tweet
 
