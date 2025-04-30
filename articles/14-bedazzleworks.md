@@ -1,4 +1,8 @@
-# 📰 Press Release
+# Press Release
+
+![BedazzleWorks Logo](https://myfunscience.com/wp-content/uploads/glitter-goat.jpg)
+
+**BedazzleWorks™ — Layering Behavior at Scale**
 
 ## BedazzleWorks Launches the Future of Behavior Composition: BedazzleJS
 
